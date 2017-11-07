@@ -10,7 +10,6 @@ namespace Capstone.DAL
 {
     public class NationalParkDAL
     {
-
         private string connectionString;
         const string SQL_ShowAllParks = "select * from park";
         const string SQL_ShowParkDetail = "select * from park where park_id = @Id";
@@ -23,16 +22,12 @@ namespace Capstone.DAL
         public List<Park> ShowAllParks()
         {
             List<Park> parklist = new List<Park>();
-            //read teh DB and assemble a park object
-            // add park object to the list.
-            //return the list.
-
+        
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
                     SqlCommand cmd = new SqlCommand(SQL_ShowAllParks, connection);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while(reader.Read())
@@ -41,20 +36,16 @@ namespace Capstone.DAL
                         parklist.Add(p);
                     }
                 }
-            }
-            catch (SqlException)
+            }catch (SqlException)
             {
                 throw;
             }
-
             return parklist;
-
         }
 
         private static Park GetParkFromReader(SqlDataReader reader)
         {
             Park p = new Park();
-
             p.Id = Convert.ToInt32(reader["park_id"]);
             p.name = Convert.ToString(reader["name"]);
             p.location = Convert.ToString(reader["location"]);
@@ -73,7 +64,6 @@ namespace Capstone.DAL
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
                     SqlCommand cmd = new SqlCommand(SQL_ShowParkDetail, connection);
                     cmd.Parameters.AddWithValue("@Id", parkToReturn);
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -82,19 +72,11 @@ namespace Capstone.DAL
                         loadedUpPark = GetParkFromReader(reader);
                     }
                 }
-            }
-            catch (SqlException)
+            }catch (SqlException)
             {
                 throw;
             }
-
             return loadedUpPark;            
         }
-
-
-    
-
-
-
     }
 }

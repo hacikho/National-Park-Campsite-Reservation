@@ -20,17 +20,12 @@ namespace Capstone
                 {
                     Console.WriteLine("Invalid input format. Please try again");
                 }
-
                 Console.Write(message + " ");
                 userInput = Console.ReadLine();
                 numberOfAttempts++;
-            }
-            while (!int.TryParse(userInput, out intValue));
-
+            }while (!int.TryParse(userInput, out intValue));
             return intValue;
-
         }
-
 
         public static double GetDouble(string message)
         {
@@ -44,15 +39,11 @@ namespace Capstone
                 {
                     Console.WriteLine("Invalid input format. Please try again");
                 }
-
                 Console.Write(message + " ");
                 userInput = Console.ReadLine();
                 numberOfAttempts++;
-            }
-            while (!double.TryParse(userInput, out doubleValue));
-
+            }while (!double.TryParse(userInput, out doubleValue));
             return doubleValue;
-
         }
 
         public static bool GetBool(string message)
@@ -67,13 +58,10 @@ namespace Capstone
                 {
                     Console.WriteLine("Invalid input format. Please try again");
                 }
-
                 Console.Write(message + " ");
                 userInput = Console.ReadLine();
                 numberOfAttempts++;
-            }
-            while (!bool.TryParse(userInput, out boolValue));
-
+            }while (!bool.TryParse(userInput, out boolValue));
             return boolValue;
         }
 
@@ -81,20 +69,16 @@ namespace Capstone
         {
             string userInput = String.Empty;
             int numberOfAttempts = 0;
-
             do
             {
                 if (numberOfAttempts > 0)
                 {
                     Console.WriteLine("Invalid input format. Please try again");
                 }
-
                 Console.Write(message + " ");
                 userInput = Console.ReadLine();
                 numberOfAttempts++;
-            }
-            while (String.IsNullOrEmpty(userInput));
-            
+            }while (String.IsNullOrEmpty(userInput));
             return userInput;
         }
 
@@ -110,16 +94,11 @@ namespace Capstone
                 {
                     Console.WriteLine("Invalid input format. Please try again");
                 }
-
                 Console.Write(message + " ");
                 userInput = Console.ReadLine();
                 numberOfAttempts++;
-            }
-            while (!DateTime.TryParse(userInput, out datetimeValue));
-
+            }while (!DateTime.TryParse(userInput, out datetimeValue));
             return userInput;
         }
-
-
     }
 }
